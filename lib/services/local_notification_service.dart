@@ -1,4 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 class LocalNotificationService {
 
@@ -7,10 +9,13 @@ class LocalNotificationService {
   final _localNotificationService = FlutterLocalNotificationsPlugin();
 
   Future<void> initializePlatformNotifications() async {
-    const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings(''); 
 
-    IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings(
+    tz.initializeTimeZones();
+
+    const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('@drawable/ic_stat_format_list_numbered'); 
+
+    final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings(
       requestSoundPermission: true,
       requestBadgePermission: true,
       requestAlertPermission: true,
@@ -38,11 +43,7 @@ class LocalNotificationService {
       playSound: true
     );
 
-    const IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true
-    );
+    const IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
 
     return const NotificationDetails(
       android: androidNotificationDetails,
@@ -53,11 +54,27 @@ class LocalNotificationService {
   Future<void> showNotification({
     required int id,
     required String title,
-    required String body}) async {
+    required String body,
+    required int seconds}) async {
       final details = await _notificationDetails();
-       await _localNotificationService.show(id, title, body, details);
-
+      await _localNotificationService.zonedSchedule(
+        id,
+        title,
+        body,
+        tz.TZDateTime.from(DateTime.now().add(Duration(seconds: seconds)),tz.local),
+        details,
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      );
     }
+
+  void cancelNotifications(){
+    _localNotificationService.cancelAll();
+  }
+
+  void cancelSpecificNotification(int id){
+    _localNotificationService.cancel(id);
+  }
 
   void onDidReceiveLocalNotification(int id, String? title, String? body, String? payload) {
     print('id $id');

@@ -42,7 +42,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             return const Center(child: Text('NO HISTORY', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)));
           }
         },
-        //whatever is defined here can stay the same without being rebuilt by chnages in the consumer
+        //whatever is defined here can stay the same without being rebuilt by changes in the consumer
         //child: Text('Something'),
       )
     );

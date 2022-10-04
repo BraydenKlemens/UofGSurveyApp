@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:survey_app/services/local_notification_service.dart';
 import 'package:survey_app/widgets/complete_tile.dart';
 import 'package:survey_app/widgets/filter_complete.dart';
 import 'package:survey_app/widgets/survey_tile.dart';
 import '../providers/app_provider.dart';
 
-class HomeScreen extends StatelessWidget{
-  const HomeScreen({ Key? key }) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  late final LocalNotificationService service;
+
+  @override
+  void initState(){
+    service =  LocalNotificationService();
+    service.initializePlatformNotifications();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +63,17 @@ class HomeScreen extends StatelessWidget{
               ],
             );
           }else{
-            return const Center(
-              child: Text(
-                'NO SURVEYS', 
-                style: TextStyle(
-                  fontSize: 20, 
-                  fontWeight: FontWeight.bold
-                )
+            return Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  await service.showNotification(
+                    id: 0,
+                    title: 'works',
+                    body: 'something',
+                    seconds: 10,
+                  );
+                },
+                child: const Text('Hey There')
               )
             );
           }
@@ -62,3 +82,4 @@ class HomeScreen extends StatelessWidget{
     );
   }
 }
+

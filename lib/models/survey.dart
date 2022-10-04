@@ -3,7 +3,6 @@ class Survey {
   final String url;
   final DateTime date;
   late Object dictdata;
-  //Will have a datetime eventually
 
   Survey({
     required this.title,
@@ -13,7 +12,4 @@ class Survey {
     dictdata = {"title": title, "url": url, "date": date};
   }
 
-  Object getDict(){
-    return dictdata;
-  }  
 }
