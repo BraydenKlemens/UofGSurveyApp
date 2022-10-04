@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState(){
-    service =  LocalNotificationService();
+    service = LocalNotificationService();
     service.initializePlatformNotifications();
     super.initState();
   }

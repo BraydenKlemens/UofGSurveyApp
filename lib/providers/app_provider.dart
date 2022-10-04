@@ -161,7 +161,7 @@ class AppProvider extends ChangeNotifier {
       .get()
       .then((value) {
         for(var s in value['surveys']){
-          surveys.add(Survey(title: s['title'] as String, url: s['url'] as String, date: DateTime.now()));
+          surveys.add(Survey(title: s['title'] as String, url: s['url'] as String, endDate: DateTime.now()));
         }
         notifyListeners();
       });
@@ -175,7 +175,7 @@ class AppProvider extends ChangeNotifier {
       .get()
       .then((value) {
         for(var s in value['surveyscomplete']){
-          completeSurveys.add(Survey(title: s['title'] as String, url: s['url'] as String, date: DateTime.now()));
+          completeSurveys.add(Survey(title: s['title'] as String, url: s['url'] as String, endDate: DateTime.now()));
         }
         notifyListeners();
       });
@@ -188,7 +188,7 @@ class AppProvider extends ChangeNotifier {
       .get()
       .then((value) {
         for(var s in value['history']){
-          history.add(Survey(title: s['title'] as String, url: s['url'] as String, date: DateTime.now()));
+          history.add(Survey(title: s['title'] as String, url: s['url'] as String, endDate: DateTime.now()));
         }
         notifyListeners();
       });
@@ -198,9 +198,9 @@ class AppProvider extends ChangeNotifier {
   Future<void>completeSurvey(int index, Survey s) { 
     surveys.removeWhere((element) => element == s);
     if(!completeSurveys.contains(s)) {
-      completeSurveys.add(Survey(title: s.title, url: s.url, date: DateTime.now()));
+      completeSurveys.add(Survey(title: s.title, url: s.url, endDate: DateTime.now()));
     }
-    history.add(Survey(title: s.title, url: s.url, date: DateTime.now()));
+    history.add(Survey(title: s.title, url: s.url, endDate: DateTime.now()));
     //add a logging history list
     notifyListeners();
 

@@ -31,7 +31,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     child: ListTile(
                       leading: const Icon(Icons.check_circle),
                       title: Text(completedsurveys[i].title, style: const TextStyle(fontSize: 20)),
-                      subtitle: Text(completedsurveys[i].date.toString().substring(0,19), style: const TextStyle(fontSize: 18)),
+                      subtitle: Text(completedsurveys[i].endDate.toString().substring(0,19), style: const TextStyle(fontSize: 18)),
                       tileColor: Colors.blue,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                     ),
