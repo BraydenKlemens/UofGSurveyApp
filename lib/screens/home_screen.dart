@@ -63,17 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             );
           }else{
-            return Center(
-              child: ElevatedButton(
-                onPressed: () async {
-                  await service.showNotification(
-                    id: 0,
-                    title: 'works',
-                    body: 'something',
-                    seconds: 10,
-                  );
-                },
-                child: const Text('Hey There')
+            return const Center(
+              child: Text(
+                'NO SURVEYS',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
               )
             );
           }

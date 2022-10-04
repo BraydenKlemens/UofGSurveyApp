@@ -51,20 +51,23 @@ class LocalNotificationService {
     );
   }
 
-  Future<void> showNotification({
+  Future<void> scheduleNotification({
     required int id,
     required String title,
     required String body,
-    required int seconds}) async {
+    required int seconds,
+    required DateTime time}) async {
       final details = await _notificationDetails();
       await _localNotificationService.zonedSchedule(
         id,
         title,
         body,
-        tz.TZDateTime.from(DateTime.now().add(Duration(seconds: seconds)),tz.local),
+        tz.TZDateTime.from(time,tz.local),
         details,
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+        payload: "You have outstanding surveys to complete",
+        matchDateTimeComponents: DateTimeComponents.time,
       );
     }
 
