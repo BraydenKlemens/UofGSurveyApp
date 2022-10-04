@@ -15,13 +15,15 @@ to a history log and a profile page where they can manage their account.
 ![Screen Shot 2022-04-19 at 3 18 39 AM](https://user-images.githubusercontent.com/40216205/193905955-1df80bd9-2c65-445f-ba4f-ec1d9f29cf98.png)
 <img width="308" alt="history" src="https://user-images.githubusercontent.com/40216205/193906079-dbf630a6-91c4-491e-99eb-37c69e246ae4.png">
 
-## Getting Started
+## To Build:
 
-This project is a starting point for a Flutter application.
+1. Run XCode or Android Studio emulator
+2. locate to survey_app
+3. run cmd: flutter run
 
-To Build:
+## Contributors
 
-- Run XCode or Android Studio emulator
-- locate to survey_app
-- type: flutter run
+Brayden Klemens
+
+
 
