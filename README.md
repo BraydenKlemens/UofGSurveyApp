@@ -1,4 +1,4 @@
-# survey_app
+# UofG Survey App
 
 A survey hub for survey particpants involved in University of Guelph research data collection. This app streamlines
 survey collection by giving particpants a container for all of the research surveys they intend to complete.
