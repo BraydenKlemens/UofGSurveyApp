@@ -5,7 +5,7 @@ survey collection by giving particpants a container for all of the research surv
 ## Features
 - Create/delete/login using University of Guelph emails.
 - Each user recieves survey data linked to thier account from cloud firestore service upon logging into the app.
-- Users can track in progress and complete surveys through a convient UI.
+- Users can track in progress and complete surveys through a convenient UI.
 - The app will send notifications to the user once a week if they have outstanding surveys to complete.
 - Users have acess to a history log of surveys
 - Profile page to manage an account.
