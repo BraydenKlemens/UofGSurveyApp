@@ -11,7 +11,7 @@ survey collection by giving particpants a container for all of the research surv
 - Profile page to manage an account.
 
 ## To Build:
-1. Run XCode IOS or Android Studio emulator
+Run XCode IOS or Android Studio emulator
 ```
 survey_app/
 flutter run
